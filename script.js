@@ -9,6 +9,9 @@ function getComputerChoice(){
     return randomWord;
 }
 
+let playerWin = 0;
+let computerWin = 0;
+
 //const playerSelection = "Scissors"
 
 function playRound(playerSelection, computerSelection) {
@@ -39,13 +42,13 @@ function game() {
      * Calls the playround five times and 
      * computes the winner of the game
      */
-    let playerWin, computerWin = 0;
+    
     for(let i = 0; i < 5; i++) {
         const playerSelection = prompt("Enter Your Selection");
         const computerSelection = getComputerChoice()
         if(playRound(playerSelection, computerSelection) == "You Lose!"){
             computerWin++;
-            `You Lose! ${playerSelection} beats ${computerSelection}`
+            console.log(`You Lose! ${playerSelection} beats ${computerSelection}`)
         }
         else if(playRound(playerSelection, computerSelection) == "You Win!"){
             playerWin++;
@@ -58,20 +61,14 @@ function game() {
     }
 
     if (computerWin > playerWin) {
-        console.log(`Computer Wins! Score: Computer => ${computerWin} : {layer => ${playerWin}`);
+        console.log(`Computer Wins! Score: Computer => ${computerWin} : Player => ${playerWin}`);
     }
     else if(playerWin > computerWin) {
-        console.log(`You Win! Score: Computer => ${computerWin} : {layer => ${playerWin}`);
+        console.log(`You Win! Score: Computer => ${computerWin} : Player => ${playerWin}`);
     }
     else {
-        console.log("it's a tie");
+        console.log("Nobody wins: it's a tie");
     }
 }
 
 game();
-
-// const computerSelection = getComputerChoice();
-// console.log(computerSelection);
-// console.log(playRound(playerSelection, computerSelection));
-
-
