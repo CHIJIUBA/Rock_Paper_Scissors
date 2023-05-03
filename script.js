@@ -9,7 +9,7 @@ function getComputerChoice(){
     return randomWord;
 }
 
-const playerSelection = "Scissors"
+//const playerSelection = "Scissors"
 
 function playRound(playerSelection, computerSelection) {
     /**
@@ -22,20 +22,56 @@ function playRound(playerSelection, computerSelection) {
       (playerSelection === 'Scissors' && computerSelection === 'Paper') ||
       (playerSelection === 'Paper' && computerSelection === 'Rock')
     ) {
-      return `You Win! ${playerSelection} beats ${computerSelection}`;
+      return "You Win!";
     } else if (
       (computerSelection === 'Rock' && playerSelection === 'Scissors') ||
       (computerSelection === 'Scissors' && playerSelection === 'Paper') ||
       (computerSelection === 'Paper' && playerSelection === 'Rock')
     ) {
-      return `You Lose! ${computerSelection} beats ${playerSelection}`;
+      return "You Lose!";
     } else {
       return "It's a tie!";
     }
 }
 
-const computerSelection = getComputerChoice();
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    /**
+     * Calls the playround five times and 
+     * computes the winner of the game
+     */
+    let playerWin, computerWin = 0;
+    for(let i = 0; i < 5; i++) {
+        const playerSelection = prompt("Enter Your Selection");
+        const computerSelection = getComputerChoice()
+        if(playRound(playerSelection, computerSelection) == "You Lose!"){
+            computerWin++;
+            `You Lose! ${playerSelection} beats ${computerSelection}`
+        }
+        else if(playRound(playerSelection, computerSelection) == "You Win!"){
+            playerWin++;
+            console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
+        }
+        else {
+            console.log("it's a tie");
+        }
+
+    }
+
+    if (computerWin > playerWin) {
+        console.log(`Computer Wins! Score: Computer => ${computerWin} : {layer => ${playerWin}`);
+    }
+    else if(playerWin > computerWin) {
+        console.log(`You Win! Score: Computer => ${computerWin} : {layer => ${playerWin}`);
+    }
+    else {
+        console.log("it's a tie");
+    }
+}
+
+game();
+
+// const computerSelection = getComputerChoice();
+// console.log(computerSelection);
+// console.log(playRound(playerSelection, computerSelection));
 
 
