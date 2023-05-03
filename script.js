@@ -48,7 +48,7 @@ function game() {
         const computerSelection = getComputerChoice()
         if(playRound(playerSelection, computerSelection) == "You Lose!"){
             computerWin++;
-            console.log(`You Lose! ${playerSelection} beats ${computerSelection}`)
+            console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)
         }
         else if(playRound(playerSelection, computerSelection) == "You Win!"){
             playerWin++;
